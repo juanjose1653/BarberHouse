@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap');
+
+    * {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .divNav {
+      background: linear-gradient(to right,#605851,black);
+      height: 105px;
+      font-size: larger;
+    }
+
+    div.navbar-nav {
+      position: absolute;
+      left: 50%;
+      transform: translatex(-50%);
+    }
+
+    img.logo {
+      width: 100px;
+      height: 90px;
+      object-fit: cover;
+      
+    }
+
+    div #derecha {
+      text-align: right;
+    }
+
+    #navbardrop {
+      color: white;
+    }
+  
+    h2{font-size: 80px;}
+    
+
+    .inicioPag {
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      text-align: center;
+      height: 36em;
+      font-size:x-large;
+      color: white;
+    }
+    .citas{
+      background-color: rgb(255, 255, 255, 50%);
+    }
+    .empleados{
+      background-color: rgb(255, 255, 255, 50%);
+    }
+
+    .empleados {
+      background-color: rgb(0, 0, 0, 50%);
+      width: 700px;
+      height: auto;
+      text-align: center;
+      margin-top: 20px;
+      margin-left: auto;
+      margin-right: auto;
+
+    }
+  </style>
+</head>
+
+<body>
+  <div class="divNav">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div>
+        <a class="navbar-brand" href="./inicio.html">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img class="logo" src="./img/logoBarberHouse.png">
+        </a>
+      </div>
+
+
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              Citas
+            </a>
+            <div class="dropdown-menu citas">
+              <a class="dropdown-item" href="./historialCitasUsuario.html">Ver Citas.</a>
+              <a class="dropdown-item" href="./historialCitasAdmin.html">Ver Citas</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              Empleados
+            </a>
+            <div class="dropdown-menu empleados">
+              <a class="dropdown-item" href="./registrarEmpleados.html">
+                Registrar Empleado
+              </a>
+              <a class="dropdown-item" href="./tablaEmpleados.html">Listar</a>
+            </div>
+          </li>
+
+
+          <a class="nav-item nav-link" href="#" style="color: white;">Servicios</a>
+          <a class="nav-item nav-link" href="#" style="color: white;">Galeria</a>
+          <a class="nav-item nav-link" href="#" style="color: white;">Horarios</a>
+          <a class="nav-item nav-link" href="#" style="color: white;">Contacto</a>
+
+        </div>
+      </div>
+      <div id="apartadoDerecha" class="nav justify-content-end">
+
+
+        <a class="nav-item nav-link" href="./login.html" id="navbardrop">
+          Iniciar sesión
+        </a>
+
+        <a class="nav-item nav-link" href="./registro.html" id="navbardrop">Registro</a>
+      </div>
+    </nav>
+  
+  <div class="container empleados">
+    <h2>Empleados</h2>
+    <table id="tablaEmpleado" class="table">
+      <thead>
+        <tr>
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>John</td>
+          <td>Doe</td>
+
+          <td>
+            <button data-toggle="modal" data-target="#botonVerEmpleado1" role="dialog" id="verInfoEmpleado" type="button" class="btn btn-info"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+              </svg></button>
+            <button data-toggle="modal" data-target="#botonEditarEmpleado1" role="dialog" type="button" class="btn btn-warning"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                <path
+                  d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                <path fill-rule="evenodd"
+                  d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+              </svg></button>
+            <button  data-toggle="modal" data-target="#botonEliminarEmpleado1" role="dialog" type="button" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                <path
+                  d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+              </svg></button>
+          </td>
+        </tr>
+        
+        <div class="modal" id="botonVerEmpleado1">
+          <div class="modal-dialog">
+            <div class="modal-content ">
+              <br>
+              <h2>EMPLEADO</h2><br>
+              <form>
+                <div>
+                  <label for="nombre">Nombre:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="nombre" placeholder="John" name="Nombre"
+                    required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="apellido">Apellido:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="apellido" placeholder="Doe"
+                    name="Apellido" required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="correo">Correo:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="email" id="correo" placeholder="john@example.com" name="Correo"
+                    required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+
+                <a>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">X</span>
+                  </button>
+                </a>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal" id="botonEditarEmpleado1">
+          <div class="modal-dialog">
+            <div class="modal-content ">
+              <br>
+              <h2>EDITAR EMPLEADO</h2><br>
+              <form>
+                <div>
+                  <label for="nombre">Nombre:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="nombre" placeholder="John" name="Nombre"
+                    required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="apellido">Apellido:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="apellido" placeholder="Doe"
+                    name="Apellido" required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="correo">Correo:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="email" id="correo" placeholder="john@example.com" name="Correo"
+                    required><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+
+                <a>
+                  <button type="button" class="btn btn-primary">Confirmar</button>
+                </a><br><br>
+
+                <a>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">X</span>
+                  </button>
+                </a>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal" id="botonEliminarEmpleado1">
+          <div class="modal-dialog">
+            <div class="modal-content ">
+              <br>
+              <h2>ELIMINAR EMPLEADO</h2><br>
+              <h3>¿Desea Eliminar empleado?</h3>
+                <a>
+                  <button type="button"  class="btn btn-primary">Eliminar</button>
+                </a><br>
+                <a>
+                  <button type="button" data-dismiss="modal"  class="btn btn-primary">Cancelar</button>
+                </a><br><br>
+            </div>
+          </div>
+        </div>
+        <!--__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________-->
+        <tr>
+          <td>Mary</td>
+          <td>Moe</td>
+          <td>
+            <button data-toggle="modal" data-target="#botonVerEmpleado2" role="dialog" type="button" class="btn btn-info"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+              </svg></button>
+            <button data-toggle="modal" data-target="#botonEditarEmpleado2" role="dialog" type="button" class="btn btn-warning"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                <path
+                  d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                <path fill-rule="evenodd"
+                  d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+              </svg></button>
+            <button data-toggle="modal" data-target="#botonEliminarEmpleado2" role="dialog" type="button" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                <path
+                  d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+              </svg></button>
+          </td>
+        </tr>
+
+        <div class="modal" id="botonVerEmpleado2">
+          <div class="modal-dialog">
+            <div class="modal-content ">
+              <br>
+              <h2>EMPLEADO</h2><br>
+              <form>
+                <div>
+                  <label for="nombre">Nombre:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="nombre" placeholder="Mary" name="Nombre"
+                    required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="apellido">Apellido:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="apellido" placeholder="Moe"
+                    name="Apellido" required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="correo">Correo:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="email" id="correo" placeholder="mary@example.com" name="Correo"
+                    required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <a>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">X</span>
+                  </button>
+                </a>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal" id="botonEditarEmpleado2">
+          <div class="modal-dialog">
+            <div class="modal-content ">
+              <br>
+              <h2>EDITAR EMPLEADO</h2><br>
+              <form>
+                <div>
+                  <label for="nombre">Nombre:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="nombre" placeholder="Mary" name="Nombre"
+                    required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="apellido">Apellido:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="apellido" placeholder="Moe"
+                    name="Apellido" required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="correo">Correo:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="email" id="correo" placeholder="mary@example.com" name="Correo"
+                    required><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+
+                <a>
+                  <button type="button" class="btn btn-primary">Confirmar</button>
+                </a><br><br>
+                <a>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">X</span>
+                  </button>
+                </a>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal" id="botonEliminarEmpleado2">
+          <div class="modal-dialog">
+            <div class="modal-content ">
+              <br>
+              <h2>ELIMINAR EMPLEADO</h2><br>
+              <h3>¿Desea Eliminar empleado?</h3>
+                <a>
+                  <button type="button"  class="btn btn-primary">Eliminar</button>
+                </a><br>
+                <a>
+                  <button type="button" data-dismiss="modal"  class="btn btn-primary">Cancelar</button>
+                </a><br><br>
+            </div>
+          </div>
+        </div>
+        <!--__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________-->
+        <tr>
+          <td>July</td>
+          <td>Dooley</td>
+          <td>
+            <button data-toggle="modal" data-target="#botonVerEmpleado3" role="dialog" type="button" class="btn btn-info"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+              </svg></button>
+            <button data-toggle="modal" data-target="#botonEditarEmpleado3" role="dialog" type="button" class="btn btn-warning"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                <path
+                  d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                <path fill-rule="evenodd"
+                  d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+              </svg></button>
+            <button data-toggle="modal" data-target="#botonEliminarEmpleado3" role="dialog" type="button" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                <path
+                  d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+              </svg></button>
+          </td>
+        </tr>
+
+        <div class="modal" id="botonVerEmpleado3">
+          <div class="modal-dialog">
+            <div class="modal-content ">
+              <br>
+              <h2>EMPLEADO</h2><br>
+              <form>
+                <div>
+                  <label for="nombre">Nombre:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="nombre" placeholder="July" name="Nombre"
+                    required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="apellido">Apellido:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="apellido" placeholder="Dooley"
+                    name="Apellido" required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="correo">Correo:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="email" id="correo" placeholder="july@example.com" name="Correo"
+                    required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+
+                <a>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">X</span>
+                  </button>
+                </a>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal" id="botonEditarEmpleado3">
+          <div class="modal-dialog">
+            <div class="modal-content ">
+              <br>
+              <h2>EDITAR EMPLEADO</h2><br>
+              <form>
+                <div>
+                  <label for="nombre">Nombre:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="nombre" placeholder="July" name="Nombre"
+                    required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="apellido">Apellido:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="apellido" placeholder="Dooley"
+                    name="Apellido" required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="correo">Correo:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="email" id="correo" placeholder="july@example.com" name="Correo"
+                    required><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+
+                <a>
+                  <button type="button" class="btn btn-primary">Confirmar</button>
+                </a><br><br>
+                <a>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">X</span>
+                  </button>
+                </a>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal" id="botonEliminarEmpleado3">
+          <div class="modal-dialog">
+            <div class="modal-content ">
+              <br>
+              <h2>ELIMINAR EMPLEADO</h2><br>
+              <h3>¿Desea Eliminar empleado?</h3>
+                <a>
+                  <button type="button"  class="btn btn-primary">Eliminar</button>
+                </a><br>
+                <a>
+                  <button type="button" data-dismiss="modal"  class="btn btn-primary">Cancelar</button>
+                </a><br><br>
+            </div>
+          </div>
+        </div>
+        <!--__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________-->
+        <tr>
+          <td>Cristian</td>
+          <td>Carboleda</td>
+          <td>
+            <button data-toggle="modal" data-target="#botonVerEmpleado4" role="dialog" type="button" class="btn btn-info"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+              </svg></button>
+            <button data-toggle="modal" data-target="#botonEditarEmpleado4" role="dialog" type="button" class="btn btn-warning"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                <path
+                  d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                <path fill-rule="evenodd"
+                  d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+              </svg></button>
+            <button data-toggle="modal" data-target="#botonEliminarEmpleado4" role="dialog" type="button" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                <path
+                  d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+              </svg></button>
+          </td>
+        </tr>
+
+        <div class="modal" id="botonVerEmpleado4">
+          <div class="modal-dialog">
+            <div class="modal-content ">
+              <br>
+              <h2>EMPLEADO</h2><br>
+              <form>
+                <div>
+                  <label for="nombre">Nombre:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="nombre" placeholder="Cristian" name="Nombre"
+                    required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="apellido">Apellido:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="apellido" placeholder=">Carboleda"
+                    name="Apellido" required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="correo">Correo:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="email" id="correo" placeholder="cristian@example.com" name="Correo"
+                    required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+
+                <a>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">X</span>
+                  </button>
+                </a>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal" id="botonEditarEmpleado4">
+          <div class="modal-dialog">
+            <div class="modal-content ">
+              <br>
+              <h2>EDITAR EMPLEADO</h2><br>
+              <form>
+                <div>
+                  <label for="nombre">Nombre:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="nombre" placeholder="Cristian" name="Nombre"
+                    required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="apellido">Apellido:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="apellido" placeholder="Carboleda"
+                    name="Apellido" required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="correo">Correo:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="email" id="correo" placeholder="cristian@example.com" name="Correo"
+                    required><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+
+                <a>
+                  <button type="button" class="btn btn-primary">Confirmar</button>
+                </a><br><br>
+                <a>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">X</span>
+                  </button>
+                </a>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal" id="botonEliminarEmpleado4">
+          <div class="modal-dialog">
+            <div class="modal-content ">
+              <br>
+              <h2>ELIMINAR EMPLEADO</h2><br>
+              <h3>¿Desea Eliminar empleado?</h3>
+                <a>
+                  <button type="button"  class="btn btn-primary">Eliminar</button>
+                </a><br>
+                <a>
+                  <button type="button" data-dismiss="modal"  class="btn btn-primary">Cancelar</button>
+                </a><br><br>
+            </div>
+          </div>
+        </div>
+        <!--__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________-->
+        
+        <tr>
+          <td>Johan</td>
+          <td>Perez</td>
+          <td>
+            <button data-toggle="modal" data-target="#botonVerEmpleado5" role="dialog" type="button" class="btn btn-info"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+              </svg></button>
+            <button data-toggle="modal" data-target="#botonEditarEmpleado5" role="dialog" type="button" class="btn btn-warning"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                <path
+                  d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                <path fill-rule="evenodd"
+                  d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+              </svg></button>
+            <button data-toggle="modal" data-target="#botonEliminarEmpleado5" role="dialog" type="button" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                <path
+                  d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+              </svg></button>
+          </td>
+        </tr>
+
+        <div class="modal" id="botonVerEmpleado5">
+          <div class="modal-dialog">
+            <div class="modal-content ">
+              <br>
+              <h2>EMPLEADO</h2><br>
+              <form>
+                <div>
+                  <label for="nombre">Nombre:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="nombre" placeholder="Johan" name="Nombre"
+                    required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="apellido">Apellido:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="apellido" placeholder="Perez"
+                    name="Apellido" required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="correo">Correo:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="email" id="correo" placeholder="johan@example.com" name="Correo"
+                    required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+
+                <a>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">X</span>
+                  </button>
+                </a>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal" id="botonEditarEmpleado5">
+          <div class="modal-dialog">
+            <div class="modal-content ">
+              <br>
+              <h2>EDITAR EMPLEADO</h2><br>
+              <form>
+                <div>
+                  <label for="nombre">Nombre:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="nombre" placeholder="Johan" name="Nombre"
+                    required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="apellido">Apellido:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="apellido" placeholder="Perez"
+                    name="Apellido" required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="correo">Correo:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="email" id="correo" placeholder="johan@example.com" name="Correo"
+                    required><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+
+                <a>
+                  <button type="button" class="btn btn-primary">Confirmar</button>
+                </a><br><br>
+                <a>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">X</span>
+                  </button>
+                </a>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal" id="botonEliminarEmpleado5">
+          <div class="modal-dialog">
+            <div class="modal-content ">
+              <br>
+              <h2>ELIMINAR EMPLEADO</h2><br>
+              <h3>¿Desea Eliminar empleado?</h3>
+                <a>
+                  <button type="button"  class="btn btn-primary">Eliminar</button>
+                </a><br>
+                <a>
+                  <button type="button" data-dismiss="modal"  class="btn btn-primary">Cancelar</button>
+                </a><br><br>
+            </div>
+          </div>
+        </div>
+        <!--__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________-->
+
+        <tr>
+          <td>Juan</td>
+          <td>Restrepo</td>
+          <td>
+            <button data-toggle="modal" data-target="#botonVerEmpleado6" role="dialog" type="button" class="btn btn-info"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+              </svg></button>
+            <button data-toggle="modal" data-target="#botonEditarEmpleado6" role="dialog" type="button" class="btn btn-warning"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                <path
+                  d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                <path fill-rule="evenodd"
+                  d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+              </svg></button>
+            <button data-toggle="modal" data-target="#botonEliminarEmpleado6" role="dialog" type="button" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                <path
+                  d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+              </svg></button>
+          </td>
+        </tr>
+
+        <div class="modal" id="botonVerEmpleado6">
+          <div class="modal-dialog">
+            <div class="modal-content ">
+              <br>
+              <h2>EMPLEADO</h2><br>
+              <form>
+                <div>
+                  <label for="nombre">Nombre:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="nombre" placeholder="Juan" name="Nombre"
+                    required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="apellido">Apellido:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="apellido" placeholder="Restrepo"
+                    name="Apellido" required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="correo">Correo:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="email" id="correo" placeholder="juan@example.com" name="Correo"
+                    required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+
+                <a>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">X</span>
+                  </button>
+                </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal" id="botonEditarEmpleado6">
+          <div class="modal-dialog">
+            <div class="modal-content ">
+              <br>
+              <h2>EDITAR EMPLEADO</h2><br>
+              <form>
+                <div>
+                  <label for="nombre">Nombre:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="nombre" placeholder="Juan" name="Nombre"
+                    required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="apellido">Apellido:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="apellido" placeholder="Restrepo"
+                    name="Apellido" required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="correo">Correo:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="email" id="correo" placeholder="juan@example.com" name="Correo"
+                    required><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+
+                <a>
+                  <button type="button" class="btn btn-primary">Confirmar</button>
+                </a><br><br>
+                <a>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">X</span>
+                  </button>
+                </a>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal" id="botonEliminarEmpleado6">
+          <div class="modal-dialog">
+            <div class="modal-content ">
+              <br>
+              <h2>ELIMINAR EMPLEADO</h2><br>
+              <h3>¿Desea Eliminar empleado?</h3>
+                <a>
+                  <button type="button"  class="btn btn-primary">Eliminar</button>
+                </a><br>
+                <a>
+                  <button type="button" data-dismiss="modal"  class="btn btn-primary">Cancelar</button>
+                </a><br><br>
+            </div>
+          </div>
+        </div>
+        <!--__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________-->
+
+        <tr>
+          <td>Julia</td>
+          <td>Rojas</td>
+          <td>
+            <button data-toggle="modal" data-target="#botonVerEmpleado7" role="dialog" type="button" class="btn btn-info"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+              </svg></button>
+            <button data-toggle="modal" data-target="#botonEditarEmpleado7" role="dialog" type="button" class="btn btn-warning"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                <path
+                  d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                <path fill-rule="evenodd"
+                  d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+              </svg></button>
+            <button data-toggle="modal" data-target="#botonEliminarEmpleado7" role="dialog" type="button" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                <path
+                  d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+              </svg></button>
+          </td>
+        </tr>
+
+        <div class="modal" id="botonVerEmpleado7">
+          <div class="modal-dialog">
+            <div class="modal-content ">
+              <br>
+              <h2>EMPLEADO</h2><br>
+              <form>
+                <div>
+                  <label for="nombre">Nombre:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="nombre" placeholder="Julia" name="Nombre"
+                    required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="apellido">Apellido:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="apellido" placeholder="Rojas"
+                    name="Apellido" required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="correo">Correo:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="email" id="correo" placeholder="julia@example.com" name="Correo"
+                    required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+
+                <a>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">X</span>
+                  </button>
+                </a>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal" id="botonEditarEmpleado7">
+          <div class="modal-dialog">
+            <div class="modal-content ">
+              <br>
+              <h2>EDITAR EMPLEADO</h2><br>
+              <form>
+                <div>
+                  <label for="nombre">Nombre:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="nombre" placeholder="Julia" name="Nombre"
+                    required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="apellido">Apellido:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="apellido" placeholder="Rojas"
+                    name="Apellido" required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="correo">Correo:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="email" id="correo" placeholder="julia@example.com" name="Correo"
+                    required><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+
+                <a>
+                  <button type="button" class="btn btn-primary">Confirmar</button>
+                </a><br><br>
+                <a>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">X</span>
+                  </button>
+                </a>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal" id="botonEliminarEmpleado7">
+          <div class="modal-dialog">
+            <div class="modal-content ">
+              <br>
+              <h2>ELIMINAR EMPLEADO</h2><br>
+              <h3>¿Desea Eliminar empleado?</h3>
+                <a>
+                  <button type="button"  class="btn btn-primary">Eliminar</button>
+                </a><br>
+                <a>
+                  <button type="button" data-dismiss="modal"  class="btn btn-primary">Cancelar</button>
+                </a><br><br>
+            </div>
+          </div>
+        </div>
+        <!--__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________-->
+
+        <tr>
+          <td>Luz</td>
+          <td>Duque</td>
+          <td>
+            <button data-toggle="modal" data-target="#botonVerEmpleado8" role="dialog" type="button" class="btn btn-info"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+              </svg></button>
+            <button data-toggle="modal" data-target="#botonEditarEmpleado8" role="dialog" type="button" class="btn btn-warning"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                <path
+                  d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                <path fill-rule="evenodd"
+                  d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+              </svg></button>
+            <button data-toggle="modal" data-target="#botonEliminarEmpleado8" role="dialog" type="button" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                <path
+                  d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+              </svg></button>
+          </td>
+        </tr>
+
+        <div class="modal" id="botonVerEmpleado8">
+          <div class="modal-dialog">
+            <div class="modal-content ">
+              <br>
+              <h2>EMPLEADO</h2><br>
+              <form>
+                <div>
+                  <label for="nombre">Nombre:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="nombre" placeholder="John" name="Luz"
+                    required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="apellido">Apellido:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="apellido" placeholder="Duque"
+                    name="Apellido" required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="correo">Correo:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="email" id="correo" placeholder="luz@example.com" name="Correo"
+                    required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+
+                <a>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">X</span>
+                  </button>
+                </a>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal" id="botonEditarEmpleado8">
+          <div class="modal-dialog">
+            <div class="modal-content ">
+              <br>
+              <h2>EDITAR EMPLEADO</h2><br>
+              <form>
+                <div>
+                  <label for="nombre">Nombre:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="nombre" placeholder="John" name="Nombre"
+                    required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="apellido">Apellido:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="apellido" placeholder="Doe"
+                    name="Apellido" required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="correo">Correo:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="email" id="correo" placeholder="john@example.com" name="Correo"
+                    required><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+
+                <a>
+                  <button type="button" class="btn btn-primary">Confirmar</button>
+                </a><br><br>
+                <a>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">X</span>
+                  </button>
+                </a>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal" id="botonEliminarEmpleado8">
+          <div class="modal-dialog">
+            <div class="modal-content ">
+              <br>
+              <h2>ELIMINAR EMPLEADO</h2><br>
+              <h3>¿Desea Eliminar empleado?</h3>
+                <a>
+                  <button type="button"  class="btn btn-primary">Eliminar</button>
+                </a><br>
+                <a>
+                  <button type="button" data-dismiss="modal"  class="btn btn-primary">Cancelar</button>
+                </a><br><br>
+            </div>
+          </div>
+        </div>
+        <!--__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________-->
+        <tr>
+          <td>Claudia</td>
+          <td>Loaiza</td>
+          <td>
+            <button data-toggle="modal" data-target="#botonVerEmpleado9" role="dialog" type="button" class="btn btn-info"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+              </svg></button>
+            <button data-toggle="modal" data-target="#botonEditarEmpleado9" role="dialog" type="button" class="btn btn-warning"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                <path
+                  d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                <path fill-rule="evenodd"
+                  d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+              </svg></button>
+            <button data-toggle="modal" data-target="#botonEliminarEmpleado9" role="dialog" type="button" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                <path
+                  d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+              </svg></button>
+          </td>
+        </tr>
+
+        <div class="modal" id="botonVerEmpleado9">
+          <div class="modal-dialog">
+            <div class="modal-content ">
+              <br>
+              <h2>EMPLEADO</h2><br>
+              <form>
+                <div>
+                  <label for="nombre">Nombre:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="nombre" placeholder="Claudia" name="Nombre"
+                    required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="apellido">Apellido:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="apellido" placeholder="loaiza"
+                    name="Apellido" required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="correo">Correo:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="email" id="correo" placeholder="claudia@example.com" name="Correo"
+                    required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+
+                <a>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">X</span>
+                  </button>
+                </a>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal" id="botonEditarEmpleado9">
+          <div class="modal-dialog">
+            <div class="modal-content ">
+              <br>
+              <h2>EDITAR EMPLEADO</h2><br>
+              <form>
+                <div>
+                  <label for="nombre">Nombre:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="nombre" placeholder="Claudia" name="Nombre"
+                    required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="apellido">Apellido:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="apellido" placeholder="Loaiza"
+                    name="Apellido" required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="correo">Correo:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="email" id="correo" placeholder="claudia@example.com" name="Correo"
+                    required><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+
+                <a>
+                  <button type="button" class="btn btn-primary">Confirmar</button>
+                </a><br><br>
+                <a>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">X</span>
+                  </button>
+                </a>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal" id="botonEliminarEmpleado9">
+          <div class="modal-dialog">
+            <div class="modal-content ">
+              <br>
+              <h2>ELIMINAR EMPLEADO</h2><br>
+              <h3>¿Desea Eliminar empleado?</h3>
+                <a>
+                  <button type="button"  class="btn btn-primary">Eliminar</button>
+                </a><br>
+                <a>
+                  <button type="button" data-dismiss="modal"  class="btn btn-primary">Cancelar</button>
+                </a><br><br>
+            </div>
+          </div>
+        </div>
+        <!--__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________-->
+        <tr>
+          <td>Diana</td>
+          <td>Ruiz</td>
+          <td>
+            <button data-toggle="modal" data-target="#botonVerEmpleado10" role="dialog" type="button" class="btn btn-info"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+              </svg></button>
+            <button data-toggle="modal" data-target="#botonEditarEmpleado10" role="dialog" type="button" class="btn btn-warning"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                <path
+                  d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                <path fill-rule="evenodd"
+                  d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+              </svg></button>
+            <button data-toggle="modal" data-target="#botonEliminarEmpleado10" role="dialog" type="button" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                <path
+                  d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+              </svg></button>
+          </td>
+        </tr>
+
+        <div class="modal" id="botonVerEmplado10">
+          <div class="modal-dialog">
+            <div class="modal-content ">
+              <br>
+              <h2>EMPLEADO</h2><br>
+              <form>
+                <div>
+                  <label for="nombre">Nombre:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="nombre" placeholder="Diana" name="Nombre"
+                    required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="apellido">Apellido:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="apellido" placeholder="Ruiz"
+                    name="Apellido" required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="correo">Correo:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="email" id="correo" placeholder="diana@example.com" name="Correo"
+                    required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+
+                <a>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">X</span>
+                  </button>
+                </a>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal" id="botonEditarEmpleado10">
+          <div class="modal-dialog">
+            <div class="modal-content ">
+              <br>
+              <h2>EDITAR EMPLEADO</h2><br>
+              <form>
+                <div>
+                  <label for="nombre">Nombre:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="nombre" placeholder="Diana" name="Nombre"
+                    required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="apellido">Apellido:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="text" id="apellido" placeholder="Ruiz"
+                    name="Apellido" required readonly><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div>
+                  <label for="correo">Correo:</label><br>
+                  <input class="inputsRegistrarEmpleado" type="email" id="correo" placeholder="diana@example.com" name="Correo"
+                    required><br><br>
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+
+                <a>
+                  <button type="button" class="btn btn-primary">Confirmar</button>
+                </a><br><br>
+                <a>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">X</span>
+                  </button>
+                </a>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal" id="botonEliminarEmpleado10">
+          <div class="modal-dialog">
+            <div class="modal-content ">
+              <br>
+              <h2>ELIMINAR EMPLEADO</h2><br>
+              <h3>¿Desea Eliminar empleado?</h3>
+                <a>
+                  <button type="button"  class="btn btn-primary">Eliminar</button>
+                </a><br>
+                <a>
+                  <button type="button" data-dismiss="modal"  class="btn btn-primary">Cancelar</button>
+                </a><br><br>
+            </div>
+          </div>
+        </div>
+      <!--__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________-->
+      </tbody>
+    </table>
+  </div>
+  <script>
+    $(document).ready( function () {
+    $('#tablaEmpleado').DataTable();
+    } );
+  </script>
+</body>
+
+</html>
